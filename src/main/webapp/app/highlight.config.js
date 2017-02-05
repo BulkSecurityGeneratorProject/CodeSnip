@@ -3,11 +3,11 @@
 
     angular
         .module('codeSnipApp')
-        .config(bootstrapMaterialDesignConfig);
+        .config(highlighConfig);
 
-    bootstrapMaterialDesignConfig.$inject = ['hljsServiceProvider'];
+    highlighConfig.$inject = ['hljsServiceProvider'];
 
-    function bootstrapMaterialDesignConfig(hljsServiceProvider) {
+    function highlighConfig(hljsServiceProvider) {
         hljsServiceProvider.setOptions({
             // replace tab with 4 spaces
             tabReplace: '    '
