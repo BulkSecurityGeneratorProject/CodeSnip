@@ -25,8 +25,11 @@
         vm.$state = $state;
 
         function login() {
+            $state.go('login');
+            /*
             collapseNavbar();
             LoginService.open();
+            */
         }
 
         function logout() {
