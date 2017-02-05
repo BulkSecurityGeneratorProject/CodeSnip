@@ -1,0 +1,88 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="mySnippetLabel">Create or edit a Snippet</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.snippet.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.snippet.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="vm.snippet.description"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_snippet">Snippet</label>
+            <input type="text" class="form-control" name="snippet" id="field_snippet"
+                    ng-model="vm.snippet.snippet"
+                    required/>
+            <div ng-show="editForm.snippet.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.snippet.$error.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_url">Url</label>
+            <input type="text" class="form-control" name="url" id="field_url"
+                    ng-model="vm.snippet.url"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_durationInMinutes">Duration In Minutes</label>
+            <input type="number" class="form-control" name="durationInMinutes" id="field_durationInMinutes"
+                    ng-model="vm.snippet.durationInMinutes"
+                    required min="1"/>
+            <div ng-show="editForm.durationInMinutes.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.durationInMinutes.$error.required">
+                    This field is required.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.durationInMinutes.$error.min" translate-value-min="1">
+                    This field should be at least 1.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.durationInMinutes.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_commentsBlocked">Comments Blocked</label>
+            <input type="checkbox" class="form-control" name="commentsBlocked" id="field_commentsBlocked"
+                    ng-model="vm.snippet.commentsBlocked"
+                    />
+        </div>
+
+        <div class="form-group">
+            <label for="field_owner">Owner</label>
+            <select class="form-control" id="field_owner" name="owner" ng-model="vm.snippet.ownerId" ng-options="user.id as user.id for user in vm.users"            >
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_programmingLanguage">Programming Language</label>
+            <select class="form-control" id="field_programmingLanguage" name="programmingLanguage" ng-model="vm.snippet.programmingLanguageId" ng-options="programmingLanguage.id as programmingLanguage.id for programmingLanguage in vm.programminglanguages"            >
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

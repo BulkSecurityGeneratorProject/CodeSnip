@@ -1,0 +1,47 @@
+
+<div>
+    <h2><span>Snippet</span> {{vm.snippet.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{vm.snippet.description}}</span>
+        </dd>
+        <dt><span>Snippet</span></dt>
+        <dd>
+            <span>{{vm.snippet.snippet}}</span>
+        </dd>
+        <dt><span>Url</span></dt>
+        <dd>
+            <span>{{vm.snippet.url}}</span>
+        </dd>
+        <dt><span>Duration In Minutes</span></dt>
+        <dd>
+            <span>{{vm.snippet.durationInMinutes}}</span>
+        </dd>
+        <dt><span>Comments Blocked</span></dt>
+        <dd>
+            <span>{{vm.snippet.commentsBlocked}}</span>
+        </dd>
+        <dt><span>Owner</span></dt>
+        <dd>
+            {{vm.snippet.ownerId}}
+        </dd>
+        <dt><span>Programming Language</span></dt>
+        <dd>
+            <a ui-sref="programming-language-detail({id:vm.snippet.programmingLanguageId})">{{vm.snippet.programmingLanguageId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="snippet-detail.edit({id:vm.snippet.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

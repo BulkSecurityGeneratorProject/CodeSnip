@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span>Rating</span> {{vm.rating.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span>Rating Type</span></dt>
+        <dd>
+            <span>{{vm.rating.ratingType}}</span>
+        </dd>
+        <dt><span>Owner</span></dt>
+        <dd>
+            {{vm.rating.ownerId}}
+        </dd>
+        <dt><span>Snippet</span></dt>
+        <dd>
+            <a ui-sref="snippet-detail({id:vm.rating.snippetId})">{{vm.rating.snippetId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="rating-detail.edit({id:vm.rating.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>
