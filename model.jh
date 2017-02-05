@@ -1,0 +1,41 @@
+enum RatingType {
+	POSITIVE, NEGATIVE
+}
+
+entity ProgrammingLanguage {
+	name String required
+}
+
+entity Snippet {
+	description String
+    snippet String required
+    url String
+    durationInMinutes Integer required min(1)
+    commentsBlocked Boolean
+}
+
+entity Comment {
+	text String required
+    created ZonedDateTime required
+}
+
+entity Rating {
+	ratingType RatingType required
+}
+
+relationship OneToMany {
+	Snippet{comments} to Comment{snippet},
+    Snippet{ratings} to Rating{snippet},
+    ProgrammingLanguage{snippets} to Snippet{programmingLanguage}
+}
+
+relationship ManyToOne {
+	Snippet{owner} to User,
+    Rating{owner} to User,
+    Comment{owner} to User
+}
+
+dto all with mapstruct
+service all with serviceImpl
+paginate all with pagination
+
