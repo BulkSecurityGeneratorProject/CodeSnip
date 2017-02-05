@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 public class SnippetServiceImpl implements SnippetService{
 
     private final Logger log = LoggerFactory.getLogger(SnippetServiceImpl.class);
-    
+
     private final SnippetRepository snippetRepository;
 
     private final SnippetMapper snippetMapper;
@@ -51,7 +51,7 @@ public class SnippetServiceImpl implements SnippetService{
 
     /**
      *  Get all the snippets.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */

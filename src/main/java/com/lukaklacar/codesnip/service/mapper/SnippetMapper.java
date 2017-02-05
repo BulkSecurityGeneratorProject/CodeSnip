@@ -14,6 +14,7 @@ public interface SnippetMapper {
 
     @Mapping(source = "owner.id", target = "ownerId")
     @Mapping(source = "programmingLanguage.id", target = "programmingLanguageId")
+    @Mapping(source = "programmingLanguage.name", target = "programmingLanguageName")
     SnippetDTO snippetToSnippetDTO(Snippet snippet);
 
     List<SnippetDTO> snippetsToSnippetDTOs(List<Snippet> snippets);

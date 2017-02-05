@@ -31,6 +31,16 @@ public class SnippetDTO implements Serializable {
 
     private Long programmingLanguageId;
 
+    private String programmingLanguageName;
+
+    public String getProgrammingLanguageName() {
+        return programmingLanguageName;
+    }
+
+    public void setProgrammingLanguageName(String programmingLanguageName) {
+        this.programmingLanguageName = programmingLanguageName;
+    }
+
     public Long getId() {
         return id;
     }
@@ -38,6 +48,7 @@ public class SnippetDTO implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getDescription() {
         return description;
     }
@@ -45,6 +56,7 @@ public class SnippetDTO implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
     public String getSnippet() {
         return snippet;
     }
@@ -52,6 +64,7 @@ public class SnippetDTO implements Serializable {
     public void setSnippet(String snippet) {
         this.snippet = snippet;
     }
+
     public String getUrl() {
         return url;
     }
@@ -59,6 +72,7 @@ public class SnippetDTO implements Serializable {
     public void setUrl(String url) {
         this.url = url;
     }
+
     public Integer getDurationInMinutes() {
         return durationInMinutes;
     }
@@ -66,6 +80,7 @@ public class SnippetDTO implements Serializable {
     public void setDurationInMinutes(Integer durationInMinutes) {
         this.durationInMinutes = durationInMinutes;
     }
+
     public Boolean getCommentsBlocked() {
         return commentsBlocked;
     }
@@ -101,7 +116,9 @@ public class SnippetDTO implements Serializable {
 
         SnippetDTO snippetDTO = (SnippetDTO) o;
 
-        if ( ! Objects.equals(id, snippetDTO.id)) { return false; }
+        if (!Objects.equals(id, snippetDTO.id)) {
+            return false;
+        }
 
         return true;
     }
