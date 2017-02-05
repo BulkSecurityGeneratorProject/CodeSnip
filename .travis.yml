@@ -16,6 +16,7 @@ cache:
 env:
   - NODE_VERSION=6.9.1
 before_install:
+  - chmod +x mvnw
   - nvm install $NODE_VERSION
   - npm install -g npm
   - npm install -g bower gulp-cli
@@ -26,9 +27,9 @@ before_install:
   - java -version
 install: npm install
 script:
-  - ./mvnw clean
-  - ./mvnw test
-  - gulp test
+#  - ./mvnw clean
+#  - ./mvnw test
+#  - gulp test
   - ./mvnw package -Pprod -DskipTests
 notifications:
   webhooks:
