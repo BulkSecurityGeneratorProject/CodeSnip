@@ -53,6 +53,9 @@
                     Auth.resetPreviousState();
                     $state.go(previousState.name, previousState.params);
                 }
+                else {
+                    $state.go('home');
+                }
             }).catch(function () {
                 vm.authenticationError = true;
             });
