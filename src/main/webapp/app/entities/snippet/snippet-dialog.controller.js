@@ -5,9 +5,9 @@
         .module('codeSnipApp')
         .controller('SnippetDialogController', SnippetDialogController);
 
-    SnippetDialogController.$inject = ['$timeout', '$scope', '$stateParams', 'entity', 'Snippet', 'Comment', 'Rating', 'User', 'ProgrammingLanguage'];
+    SnippetDialogController.$inject = ['$timeout', '$state', '$scope', '$stateParams', 'entity', 'Snippet', 'Comment', 'Rating', 'User', 'ProgrammingLanguage'];
 
-    function SnippetDialogController ($timeout, $scope, $stateParams, entity, Snippet, Comment, Rating, User, ProgrammingLanguage) {
+    function SnippetDialogController ($timeout, $state, $scope, $stateParams, entity, Snippet, Comment, Rating, User, ProgrammingLanguage) {
         var vm = this;
 
         vm.snippet = entity;
@@ -32,6 +32,8 @@
             } else {
                 Snippet.save(vm.snippet, onSaveSuccess, onSaveError);
             }
+
+            $state.go('home');
         }
 
         function onSaveSuccess (result) {
