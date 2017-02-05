@@ -5,9 +5,9 @@
         .module('codeSnipApp')
         .controller('SnippetDialogController', SnippetDialogController);
 
-    SnippetDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Snippet', 'Comment', 'Rating', 'User', 'ProgrammingLanguage'];
+    SnippetDialogController.$inject = ['$timeout', '$scope', '$stateParams', 'entity', 'Snippet', 'Comment', 'Rating', 'User', 'ProgrammingLanguage'];
 
-    function SnippetDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Snippet, Comment, Rating, User, ProgrammingLanguage) {
+    function SnippetDialogController ($timeout, $scope, $stateParams, entity, Snippet, Comment, Rating, User, ProgrammingLanguage) {
         var vm = this;
 
         vm.snippet = entity;
@@ -23,7 +23,6 @@
         });
 
         function clear () {
-            $uibModalInstance.dismiss('cancel');
         }
 
         function save () {
@@ -37,7 +36,6 @@
 
         function onSaveSuccess (result) {
             $scope.$emit('codeSnipApp:snippetUpdate', result);
-            $uibModalInstance.close(result);
             vm.isSaving = false;
         }
 

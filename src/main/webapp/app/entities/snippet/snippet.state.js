@@ -105,31 +105,25 @@
             data: {
                 authorities: ['ROLE_USER']
             },
-            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-                $uibModal.open({
+            views: {
+                'content@': {
                     templateUrl: 'app/entities/snippet/snippet-dialog.html',
                     controller: 'SnippetDialogController',
                     controllerAs: 'vm',
-                    backdrop: 'static',
-                    size: 'lg',
-                    resolve: {
-                        entity: function () {
-                            return {
-                                description: null,
-                                snippet: null,
-                                url: null,
-                                durationInMinutes: null,
-                                commentsBlocked: null,
-                                id: null
-                            };
-                        }
-                    }
-                }).result.then(function() {
-                    $state.go('snippet', null, { reload: 'snippet' });
-                }, function() {
-                    $state.go('snippet');
-                });
-            }]
+                }
+            },
+            resolve: {
+                entity: function () {
+                    return {
+                        description: null,
+                        snippet: null,
+                        url: null,
+                        durationInMinutes: null,
+                        commentsBlocked: null,
+                        id: null
+                    };
+                }
+            }
         })
         .state('snippet.edit', {
             parent: 'snippet',
