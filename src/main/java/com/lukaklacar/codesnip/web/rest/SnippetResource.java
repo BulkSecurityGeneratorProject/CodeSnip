@@ -34,7 +34,7 @@ public class SnippetResource {
     private final Logger log = LoggerFactory.getLogger(SnippetResource.class);
 
     private static final String ENTITY_NAME = "snippet";
-        
+
     private final SnippetService snippetService;
 
     public SnippetResource(SnippetService snippetService) {
@@ -51,7 +51,7 @@ public class SnippetResource {
     @PostMapping("/snippets")
     @Timed
     public ResponseEntity<SnippetDTO> createSnippet(@Valid @RequestBody SnippetDTO snippetDTO) throws URISyntaxException {
-        log.debug("REST request to save Snippet : {}", snippetDTO);
+            log.debug("REST request to save Snippet : {}", snippetDTO);
         if (snippetDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new snippet cannot already have an ID")).body(null);
         }

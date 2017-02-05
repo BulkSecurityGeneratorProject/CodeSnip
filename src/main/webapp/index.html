@@ -44,6 +44,7 @@
         ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>-->
 
+
     <!-- build:js app/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -69,6 +70,12 @@
     <!-- endinject -->
     <!-- endbuild -->
 
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <script src="http://pc035860.github.io/angular-highlightjs/angular-highlightjs.min.js"></script>
+
+
     <!-- build:js app/app.js  -->
     <!-- inject:js -->
     <script src="app/app.module.js"></script>
@@ -90,6 +97,7 @@
     <script src="app/layouts/error/error.state.js"></script>
     <script src="app/home/home.state.js"></script>
     <script src="app/home/home.controller.js"></script>
+    <script src="app/highlight.config.js"></script>
     <script src="app/entities/snippet/snippet-dialog.controller.js"></script>
     <script src="app/entities/snippet/snippet-detail.controller.js"></script>
     <script src="app/entities/snippet/snippet-delete-dialog.controller.js"></script>
@@ -196,6 +204,7 @@
     <script src="app/account/account.state.js"></script>
     <!-- endinject -->
     <!-- endbuild -->
+
 
 </body>
 </html>
