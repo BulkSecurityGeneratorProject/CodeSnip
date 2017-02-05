@@ -19,6 +19,12 @@ entity Comment {
     created ZonedDateTime required
 }
 
+entity UserProfile {
+    phone String,
+    address String,
+    profileImage ImageBlob
+}
+
 entity Rating {
 	ratingType RatingType required
 }
@@ -33,6 +39,10 @@ relationship ManyToOne {
 	Snippet{owner} to User,
     Rating{owner} to User,
     Comment{owner} to User
+}
+
+relationship OneToOne {
+    UserProfile{user} to User
 }
 
 dto all with mapstruct

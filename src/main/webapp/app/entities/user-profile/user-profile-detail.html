@@ -1,0 +1,40 @@
+
+<div>
+    <h2><span>User Profile</span> {{vm.userProfile.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span>Phone</span></dt>
+        <dd>
+            <span>{{vm.userProfile.phone}}</span>
+        </dd>
+        <dt><span>Address</span></dt>
+        <dd>
+            <span>{{vm.userProfile.address}}</span>
+        </dd>
+        <dt><span>Profile Image</span></dt>
+        <dd>
+            <div ng-if="vm.userProfile.profileImage">
+                <a ng-click="vm.openFile(vm.userProfile.profileImageContentType, vm.userProfile.profileImage)">
+                    <img data-ng-src="{{'data:' + vm.userProfile.profileImageContentType + ';base64,' + vm.userProfile.profileImage}}" style="max-width: 100%;" alt="userProfile image"/>
+                </a>
+                {{vm.userProfile.profileImageContentType}}, {{vm.byteSize(vm.userProfile.profileImage)}}
+            </div>
+        </dd>
+        <dt><span>User</span></dt>
+        <dd>
+            {{vm.userProfile.userId}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="user-profile-detail.edit({id:vm.userProfile.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>
