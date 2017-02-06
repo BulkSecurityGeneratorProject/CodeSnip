@@ -49,6 +49,11 @@ public class SnippetServiceImpl implements SnippetService{
         return result;
     }
 
+    public SnippetDTO saveSnippetForUser(SnippetDTO snippetDto, long userId){
+        snippetDto.setOwnerId(userId);
+        return save(snippetDto);
+    }
+
     /**
      *  Get all the snippets.
      *

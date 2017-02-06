@@ -20,7 +20,7 @@ public interface SnippetService {
 
     /**
      *  Get all the snippets.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -40,4 +40,6 @@ public interface SnippetService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+    SnippetDTO saveSnippetForUser(SnippetDTO snippetDto, long userId);
 }

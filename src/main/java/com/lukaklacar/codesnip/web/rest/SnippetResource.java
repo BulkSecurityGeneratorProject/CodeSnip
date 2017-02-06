@@ -1,6 +1,7 @@
 package com.lukaklacar.codesnip.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.lukaklacar.codesnip.security.SecurityUtils;
 import com.lukaklacar.codesnip.service.SnippetService;
 import com.lukaklacar.codesnip.web.rest.util.HeaderUtil;
 import com.lukaklacar.codesnip.web.rest.util.PaginationUtil;
@@ -19,10 +20,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * REST controller for managing Snippet.
@@ -51,11 +50,11 @@ public class SnippetResource {
     @PostMapping("/snippets")
     @Timed
     public ResponseEntity<SnippetDTO> createSnippet(@Valid @RequestBody SnippetDTO snippetDTO) throws URISyntaxException {
-            log.debug("REST request to save Snippet : {}", snippetDTO);
+        log.debug("REST request to save Snippet : {}", snippetDTO);
         if (snippetDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new snippet cannot already have an ID")).body(null);
         }
-        SnippetDTO result = snippetService.save(snippetDTO);
+        SnippetDTO result = snippetService.saveSnippetForUser(snippetDTO, SecurityUtils.getCurrentUserId());
         return ResponseEntity.created(new URI("/api/snippets/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
