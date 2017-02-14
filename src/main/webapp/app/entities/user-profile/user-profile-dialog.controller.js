@@ -5,9 +5,9 @@
         .module('codeSnipApp')
         .controller('UserProfileDialogController', UserProfileDialogController);
 
-    UserProfileDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', '$q', 'DataUtils', 'entity', 'UserProfile', 'User'];
+    UserProfileDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$q', 'DataUtils', 'entity', 'UserProfile', 'User'];
 
-    function UserProfileDialogController ($timeout, $scope, $stateParams, $uibModalInstance, $q, DataUtils, entity, UserProfile, User) {
+    function UserProfileDialogController ($timeout, $scope, $stateParams, $q, DataUtils, entity, UserProfile, User) {
         var vm = this;
 
         vm.userProfile = entity;
@@ -22,7 +22,6 @@
         });
 
         function clear () {
-            $uibModalInstance.dismiss('cancel');
         }
 
         function save () {
@@ -36,7 +35,6 @@
 
         function onSaveSuccess (result) {
             $scope.$emit('codeSnipApp:userProfileUpdate', result);
-            $uibModalInstance.close(result);
             vm.isSaving = false;
         }
 

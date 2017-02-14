@@ -20,7 +20,7 @@
         </div>
         <div class="form-group">
             <label class="control-label" for="field_snippet">Snippet</label>
-            <input type="text" class="form-control" name="snippet" id="field_snippet"
+            <textarea type="text" rows="30" class="form-control" name="snippet" id="field_snippet"
                    ng-model="vm.snippet.snippet"
                    required/>
             <div ng-show="editForm.snippet.$invalid">
@@ -55,12 +55,6 @@
                     This field should be a number.
                 </p>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_commentsBlocked">Comments Blocked</label>
-            <input type="checkbox" class="form-control" name="commentsBlocked" id="field_commentsBlocked"
-                   ng-model="vm.snippet.commentsBlocked"
-            />
         </div>
 
         <div class="form-group">

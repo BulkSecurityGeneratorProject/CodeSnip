@@ -105,30 +105,27 @@
             data: {
                 authorities: ['ROLE_USER']
             },
-            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
-                $uibModal.open({
+            views : {
+                'content@': {
                     templateUrl: 'app/entities/user-profile/user-profile-dialog.html',
                     controller: 'UserProfileDialogController',
                     controllerAs: 'vm',
                     backdrop: 'static',
-                    size: 'lg',
-                    resolve: {
-                        entity: function () {
-                            return {
-                                phone: null,
-                                address: null,
-                                profileImage: null,
-                                profileImageContentType: null,
-                                id: null
-                            };
-                        }
-                    }
-                }).result.then(function() {
-                    $state.go('user-profile', null, { reload: 'user-profile' });
-                }, function() {
-                    $state.go('user-profile');
-                });
-            }]
+                    size: 'lg'
+                }
+            },
+            resolve: {
+                entity: function () {
+                    return {
+                        phone: null,
+                        address: null,
+                        profileImage: null,
+                        profileImageContentType: null,
+                        id: null
+                    };
+                }
+            }
+
         })
         .state('user-profile.edit', {
             parent: 'user-profile',

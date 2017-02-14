@@ -1,39 +1,15 @@
-
 <div>
-    <h2><span>Snippet</span> {{vm.snippet.id}}</h2>
+    <h2>{{vm.snippet.description}}</h2>
     <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Programming language: {{vm.snippet.programmingLanguageName}}</h3>
+        </div>
+    </div>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row jh-entity-details">
-        <dt><span>Description</span></dt>
-        <dd>
-            <span>{{vm.snippet.description}}</span>
-        </dd>
-        <dt><span>Snippet</span></dt>
-        <dd>
-        <hljs source="vm.snippet.snippet">
-        </hljs>
-        </dd>
-        <dt><span>Url</span></dt>
-        <dd>
-            <span>{{vm.snippet.url}}</span>
-        </dd>
-        <dt><span>Duration In Minutes</span></dt>
-        <dd>
-            <span>{{vm.snippet.durationInMinutes}}</span>
-        </dd>
-        <dt><span>Comments Blocked</span></dt>
-        <dd>
-            <span>{{vm.snippet.commentsBlocked}}</span>
-        </dd>
-        <dt><span>Owner</span></dt>
-        <dd>
-            {{vm.snippet.ownerId}}
-        </dd>
-        <dt><span>Programming Language</span></dt>
-        <dd>
-            <a ui-sref="programming-language-detail({id:vm.snippet.programmingLanguageId})">{{vm.snippet.programmingLanguageId}}</a>
-        </dd>
-    </dl>
+    <hr>
+    <hljs source="vm.snippet.snippet">
+    </hljs>
 
     <button type="submit"
             ui-sref="{{ vm.previousState }}"
