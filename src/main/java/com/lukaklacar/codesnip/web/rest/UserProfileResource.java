@@ -1,6 +1,7 @@
 package com.lukaklacar.codesnip.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.lukaklacar.codesnip.security.SecurityUtils;
 import com.lukaklacar.codesnip.service.UserProfileService;
 import com.lukaklacar.codesnip.web.rest.util.HeaderUtil;
 import com.lukaklacar.codesnip.web.rest.util.PaginationUtil;
@@ -33,7 +34,7 @@ public class UserProfileResource {
     private final Logger log = LoggerFactory.getLogger(UserProfileResource.class);
 
     private static final String ENTITY_NAME = "userProfile";
-        
+
     private final UserProfileService userProfileService;
 
     public UserProfileResource(UserProfileService userProfileService) {
@@ -54,6 +55,7 @@ public class UserProfileResource {
         if (userProfileDTO.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new userProfile cannot already have an ID")).body(null);
         }
+        userProfileDTO.setUserId(SecurityUtils.getCurrentUserId());
         UserProfileDTO result = userProfileService.save(userProfileDTO);
         return ResponseEntity.created(new URI("/api/user-profiles/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
