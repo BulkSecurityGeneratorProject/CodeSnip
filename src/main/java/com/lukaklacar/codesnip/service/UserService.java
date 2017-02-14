@@ -99,7 +99,7 @@ public class UserService {
         newUser.setImageUrl(imageUrl);
         newUser.setLangKey(langKey);
         // new user is not active
-        newUser.setActivated(false);
+        newUser.setActivated(true);
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);
@@ -192,7 +192,7 @@ public class UserService {
         });
     }
 
-    @Transactional(readOnly = true)    
+    @Transactional(readOnly = true)
     public Page<UserDTO> getAllManagedUsers(Pageable pageable) {
         return userRepository.findAll(pageable).map(UserDTO::new);
     }

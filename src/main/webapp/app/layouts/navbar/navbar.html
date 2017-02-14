@@ -21,11 +21,12 @@
                     </a>
                 </li>
                 <li ui-sref-active="active">
-                    <a ui-sref="user-profile.new" ng-click="vm.collapseNavbar()">
+                    <a ui-sref="user-profile-detail({id:vm.account.id})" ng-click="vm.collapseNavbar()">
                         <span class="glyphicon glyphicon-asterisk"></span>&nbsp;
                         <span >User Profile</span>
                     </a>
                 </li>
+
                 <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
                 <li ng-class="{active: vm.$state.includes('admin')}"  ng-switch-when="true" has-authority="ROLE_ADMIN" uib-dropdown dropdown>
                     <a ui-sref="programming-language" ng-click="vm.collapseNavbar()">

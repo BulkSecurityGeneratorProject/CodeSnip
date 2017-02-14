@@ -6,8 +6,10 @@ import com.lukaklacar.codesnip.domain.User;
 import com.lukaklacar.codesnip.repository.UserRepository;
 import com.lukaklacar.codesnip.security.SecurityUtils;
 import com.lukaklacar.codesnip.service.MailService;
+import com.lukaklacar.codesnip.service.UserProfileService;
 import com.lukaklacar.codesnip.service.UserService;
 import com.lukaklacar.codesnip.service.dto.UserDTO;
+import com.lukaklacar.codesnip.service.dto.UserProfileDTO;
 import com.lukaklacar.codesnip.web.rest.vm.KeyAndPasswordVM;
 import com.lukaklacar.codesnip.web.rest.vm.ManagedUserVM;
 import com.lukaklacar.codesnip.web.rest.util.HeaderUtil;
@@ -40,12 +42,15 @@ public class AccountResource {
 
     private final MailService mailService;
 
+    private final UserProfileService userProfileService;
+
     public AccountResource(UserRepository userRepository, UserService userService,
-            MailService mailService) {
+            MailService mailService, UserProfileService userProfileService) {
 
         this.userRepository = userRepository;
         this.userService = userService;
         this.mailService = mailService;
+        this.userProfileService = userProfileService;
     }
 
     /**
@@ -71,6 +76,10 @@ public class AccountResource {
                         .createUser(managedUserVM.getLogin(), managedUserVM.getPassword(),
                             managedUserVM.getFirstName(), managedUserVM.getLastName(),
                             managedUserVM.getEmail().toLowerCase(), managedUserVM.getImageUrl(), managedUserVM.getLangKey());
+
+                    UserProfileDTO userProfileDTO = new UserProfileDTO();
+                    userProfileDTO.setUserId(user.getId());
+                    userProfileService.save(userProfileDTO);
 
                     mailService.sendActivationEmail(user);
                     return new ResponseEntity<>(HttpStatus.CREATED);
